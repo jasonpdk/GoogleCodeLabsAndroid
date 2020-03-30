@@ -103,11 +103,11 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 mTextSensorProximity.setText(getResources().getString(
                         R.string.label_proximity, currentValue));
 
-                // 1500 is the max width and height I want
+                // 1500 is the max width and height I want. getMaximumRange returns 1 here, but the
+                // current value is between 0 and 10, so I multiply it by 10
                 float imageSizeCoefficient = 1500/(mSensorProximity.getMaximumRange()*10);
-                System.out.println("size coeff " + imageSizeCoefficient + " max range: " + mSensorProximity.getMaximumRange());
                 int imageSizeValue = (int)(currentValue * imageSizeCoefficient);
-                System.out.println("Image size val: " + imageSizeValue);
+
                 tuxImage.getLayoutParams().width = imageSizeValue;
                 tuxImage.getLayoutParams().height = imageSizeValue;
                 break;
